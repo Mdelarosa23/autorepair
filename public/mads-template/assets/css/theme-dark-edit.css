@@ -1,0 +1,155 @@
+/*
+ |--------------------------------------------------------------------------
+ | Dark Theme Quick Edit
+ |--------------------------------------------------------------------------
+ | Change the values below when you want to restyle the DARK mode quickly.
+ | The admin theme page can still override the main accent/background/text.
+ */
+.theme-dark {
+    --manual-dark-accent: var(--site-dark-accent);
+    --manual-dark-background: var(--site-dark-background);
+    --manual-dark-surface: #252525;
+    --manual-dark-surface-deep: #0e0e0e;
+    --manual-dark-surface-strong: #333333;
+    --manual-dark-text: var(--site-dark-text);
+    --manual-dark-heading: var(--site-dark-text);
+    --manual-dark-muted: #d5d5d5;
+    --manual-dark-border: rgba(255, 255, 255, 0.16);
+    --manual-dark-shadow: rgba(0, 0, 0, 0.35);
+}
+
+.theme-dark body,
+.theme-dark .main-nav,
+.theme-dark .navbar-area,
+.theme-dark .footer-area,
+.theme-dark .copyright-area,
+.theme-dark .feature-area,
+.theme-dark .process-item .process-inner,
+.theme-dark .counter-area,
+.theme-dark .work-area,
+.theme-dark .faq-area,
+.theme-dark .contact-area {
+    background-color: var(--manual-dark-background) !important;
+    color: var(--manual-dark-text) !important;
+}
+
+.theme-dark h1,
+.theme-dark h2,
+.theme-dark h3,
+.theme-dark h4,
+.theme-dark h5,
+.theme-dark h6,
+.theme-dark .section-title h2,
+.theme-dark .content h3,
+.theme-dark .content h3 a,
+.theme-dark .main-nav nav .navbar-nav .nav-item a,
+.theme-dark .service-item .service-content h3 a,
+.theme-dark .faq-area .faq-item .accordion li a,
+.theme-dark .footer-item h3,
+.theme-dark .copyright-area p,
+.theme-dark .copyright-area p a {
+    color: var(--manual-dark-heading) !important;
+}
+
+.theme-dark p,
+.theme-dark span,
+.theme-dark .section-title .sub-title,
+.theme-dark .banner-text p,
+.theme-dark .service-item .service-content p,
+.theme-dark .feature-area .feature-content p,
+.theme-dark .faq-area .faq-item .accordion li p,
+.theme-dark .footer-item ul li,
+.theme-dark .footer-item ul li a {
+    color: var(--manual-dark-text) !important;
+}
+
+.theme-dark a:hover,
+.theme-dark .main-nav nav .navbar-nav .nav-item a:hover,
+.theme-dark .main-nav nav .navbar-nav .nav-item a.active,
+.theme-dark .service-item .service-content i,
+.theme-dark .feature-area .feature-content ul li i,
+.theme-dark .faq-area .faq-item .accordion li a.active,
+.theme-dark .footer-item ul li a:hover,
+.theme-dark .copyright-area p a:hover {
+    color: var(--manual-dark-accent) !important;
+}
+
+.theme-dark .service-item,
+.theme-dark .faq-area .faq-item .accordion li,
+.theme-dark .footer-item,
+.theme-dark .review-area .review-bg,
+.theme-dark .review-area .review-slider,
+.theme-dark .blog-item,
+.theme-dark .shop-item,
+.theme-dark .cart-wrap .total-shopping,
+.theme-dark .checkout-item,
+.theme-dark .login-item,
+.theme-dark .signup-item,
+.theme-dark .parts-item,
+.theme-dark .pricing-item,
+.theme-dark .address-area .row {
+    background-color: var(--manual-dark-surface) !important;
+}
+
+.theme-dark .quality-area,
+.theme-dark .review-area,
+.theme-dark .parts-area,
+.theme-dark .pricing-area,
+.theme-dark .subscribe-area,
+.theme-dark .team-area,
+.theme-dark .blog-area,
+.theme-dark .testimonial-area,
+.theme-dark .contact-area .contact-right .form-control,
+.theme-dark .newsletter-form .form-control {
+    background-color: var(--manual-dark-surface-deep) !important;
+    color: var(--manual-dark-text) !important;
+}
+
+.theme-dark .cart-wrap .coupon-wrap,
+.theme-dark .cart-wrap .table,
+.theme-dark .review-area .owl-theme .owl-nav [class*=owl-],
+.theme-dark .switch-box .slider,
+.theme-dark .coming-item .coming-wrap .coming-inner {
+    background-color: var(--manual-dark-surface-strong) !important;
+}
+
+.theme-dark .banner-btn-left,
+.theme-dark .cmn-btn .banner-btn-left,
+.theme-dark .service-more,
+.theme-dark .faq-area .faq-item .accordion li a::before,
+.theme-dark .owl-theme .owl-dots .owl-dot.active span,
+.theme-dark .owl-theme .owl-dots .owl-dot:hover span,
+.theme-dark .switch-box input:checked + .slider,
+.theme-dark .back-to-top-btn {
+    background-color: var(--manual-dark-accent) !important;
+    border-color: var(--manual-dark-accent) !important;
+    color: var(--manual-dark-text) !important;
+}
+
+.theme-dark .banner-btn-right,
+.theme-dark .cmn-btn .banner-btn-right,
+.theme-dark .sorting-menu ul li,
+.theme-dark .contact-area .contact-right .form-control,
+.theme-dark .newsletter-form .form-control,
+.theme-dark .faq-area .faq-item .accordion li,
+.theme-dark .cart-wrap .table tr td,
+.theme-dark .cart-wrap .table th {
+    border-color: var(--manual-dark-border) !important;
+}
+
+.theme-dark .banner-btn-right:hover,
+.theme-dark .cmn-btn .banner-btn-right:hover,
+.theme-dark .banner-btn-left:hover,
+.theme-dark .cmn-btn .banner-btn-left:hover {
+    background-color: var(--manual-dark-surface-strong) !important;
+    color: var(--manual-dark-text) !important;
+}
+
+.theme-dark .service-item,
+.theme-dark .faq-area .faq-item .accordion li,
+.theme-dark .footer-item,
+.theme-dark .review-area .review-bg,
+.theme-dark .parts-item,
+.theme-dark .pricing-item {
+    box-shadow: 0 0 20px 0 var(--manual-dark-shadow) !important;
+}

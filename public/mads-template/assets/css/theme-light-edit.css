@@ -1,0 +1,162 @@
+:root {
+    --site-light-accent: #fdb819;
+    --site-light-background: #ffffff;
+    --site-light-text: #333333;
+    --site-dark-accent: #fdb819;
+    --site-dark-background: #1d1d1d;
+    --site-dark-text: #ffffff;
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Light Theme Quick Edit
+ |--------------------------------------------------------------------------
+ | Change the values below when you want to restyle the LIGHT mode quickly.
+ | The admin theme page can still override the main accent/background/text.
+ */
+:root {
+    --manual-light-accent: var(--site-light-accent);
+    --manual-light-background: var(--site-light-background);
+    --manual-light-surface: #ffffff;
+    --manual-light-surface-soft: #f6f4f4;
+    --manual-light-surface-warm: #faf5d4;
+    --manual-light-text: var(--site-light-text);
+    --manual-light-heading: #333333;
+    --manual-light-muted: #858584;
+    --manual-light-inverse: #ffffff;
+    --manual-light-border: #ebebeb;
+    --manual-light-overlay: rgba(221, 221, 221, 0.2);
+}
+
+body,
+.theme-light body {
+    background-color: var(--manual-light-background);
+    color: var(--manual-light-text);
+}
+
+.theme-light h1,
+.theme-light h2,
+.theme-light h3,
+.theme-light h4,
+.theme-light h5,
+.theme-light h6,
+.theme-light .section-title h2,
+.theme-light .content h3,
+.theme-light .content h3 a,
+.theme-light .navbar-light .navbar-nav .nav-item a,
+.theme-light .main-nav nav .navbar-nav .nav-item a,
+.theme-light .service-item .service-content h3 a,
+.theme-light .faq-area .faq-item .accordion li a,
+.theme-light .footer-item h3,
+.theme-light .copyright-area p,
+.theme-light .copyright-area p a {
+    color: var(--manual-light-heading);
+}
+
+.theme-light p,
+.theme-light span,
+.theme-light .section-title .sub-title,
+.theme-light .banner-text p,
+.theme-light .service-item .service-content p,
+.theme-light .feature-area .feature-content p,
+.theme-light .work-area .section-title p,
+.theme-light .faq-area .faq-item .accordion li p,
+.theme-light .footer-item ul li,
+.theme-light .footer-item ul li a {
+    color: var(--manual-light-text);
+}
+
+.theme-light a:hover,
+.theme-light .section-title .sub-title,
+.theme-light .main-nav nav .navbar-nav .nav-item a:hover,
+.theme-light .main-nav nav .navbar-nav .nav-item a.active,
+.theme-light .service-item .service-content i,
+.theme-light .feature-area .feature-content ul li i,
+.theme-light .work-item .work-inner-content h4,
+.theme-light .faq-area .faq-item .accordion li a.active,
+.theme-light .footer-item ul li a:hover,
+.theme-light .copyright-area p a:hover {
+    color: var(--manual-light-accent);
+}
+
+.theme-light .main-nav,
+.theme-light .navbar-area,
+.theme-light .service-item,
+.theme-light .faq-area .faq-item .accordion li,
+.theme-light .footer-item,
+.theme-light .review-area .review-bg,
+.theme-light .review-area .review-slider,
+.theme-light .blog-item,
+.theme-light .shop-item,
+.theme-light .cart-wrap .total-shopping,
+.theme-light .checkout-item,
+.theme-light .login-item,
+.theme-light .signup-item {
+    background-color: var(--manual-light-surface);
+}
+
+.theme-light .quality-area,
+.theme-light .faq-area,
+.theme-light .review-area,
+.theme-light .contact-area,
+.theme-light .parts-area,
+.theme-light .pricing-area,
+.theme-light .subscribe-area,
+.theme-light .team-area,
+.theme-light .blog-area,
+.theme-light .testimonial-area {
+    background-color: var(--manual-light-surface-soft);
+}
+
+.theme-light .process-item .process-inner,
+.theme-light .feature-area,
+.theme-light .counter-area,
+.theme-light .review-area .review-bg {
+    background-color: var(--manual-light-surface-warm);
+}
+
+.theme-light .banner-btn-left,
+.theme-light .cmn-btn .banner-btn-left,
+.theme-light .service-more,
+.theme-light .faq-area .faq-item .accordion li a::before,
+.theme-light .owl-theme .owl-dots .owl-dot.active span,
+.theme-light .owl-theme .owl-dots .owl-dot:hover span,
+.theme-light .switch-box input:checked + .slider,
+.theme-light .back-to-top-btn {
+    background-color: var(--manual-light-accent) !important;
+    border-color: var(--manual-light-accent) !important;
+    color: var(--manual-light-inverse) !important;
+}
+
+.theme-light .banner-btn-right,
+.theme-light .cmn-btn .banner-btn-right,
+.theme-light .sorting-menu ul li,
+.theme-light .contact-area .contact-right .form-control,
+.theme-light .newsletter-form .form-control {
+    border-color: var(--manual-light-accent);
+}
+
+.theme-light .banner-btn-right:hover,
+.theme-light .cmn-btn .banner-btn-right:hover,
+.theme-light .banner-btn-left:hover,
+.theme-light .cmn-btn .banner-btn-left:hover,
+.theme-light .footer-item ul li a:hover {
+    background-color: var(--manual-light-heading);
+    color: var(--manual-light-inverse) !important;
+}
+
+.theme-light .feature-area,
+.theme-light .faq-area .faq-item .accordion li,
+.theme-light .service-item,
+.theme-light .review-area .review-bg,
+.theme-light .footer-item,
+.theme-light .shop-item,
+.theme-light .blog-item {
+    box-shadow: 0 0 20px 0 var(--manual-light-overlay);
+}
+
+.theme-light .copyright-area,
+.theme-light .footer-area,
+.theme-light .main-nav.menu-shrink {
+    border-color: var(--manual-light-border);
+}
