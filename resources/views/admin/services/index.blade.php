@@ -40,7 +40,7 @@
                             <tbody>
                                 @forelse ($services as $service)
                                     @php($path = $service->image_path ?? '')
-                                    @php($imageUrl = $path ? (str_starts_with($path, 'assets/img/') ? asset('mads-template/' . ltrim($path, '/')) : asset(ltrim($path, '/'))) : null)
+                                    @php($imageUrl = $path ? (str_starts_with($path, 'assets/img/') ? asset(ltrim($path, '/')) : asset(ltrim($path, '/'))) : null)
                                     <tr data-search-row="{{ strtolower($service->title . ' ' . $service->description . ' ' . $service->icon_class) }}" data-title="{{ strtolower($service->title) }}" data-description="{{ strtolower($service->description) }}" data-order="{{ $service->sort_order }}" data-status="{{ $service->is_active ? 'active' : 'hidden' }}">
                                         <td>
                                             @if ($imageUrl)

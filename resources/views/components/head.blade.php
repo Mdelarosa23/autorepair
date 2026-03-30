@@ -32,4 +32,4 @@
 
 <title>Mads Auto Repair | Honest Auto Repair & Towing in Madison, TN</title>
 
-<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="icon" type="image/png" href="assets/img/logo.png">

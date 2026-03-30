@@ -30,7 +30,7 @@ class HomeSlideController extends Controller
 
     public function update(Request $request, HomeSlide $homeSlide): RedirectResponse
     {
-        $homeSlide->update($this->validatedData($request));
+        $homeSlide->update($this->validatedData($request, $homeSlide));
         return redirect()->route('admin.home-slides.index')->with('status', 'Slide updated successfully.');
     }
 
@@ -40,7 +40,7 @@ class HomeSlideController extends Controller
         return redirect()->route('admin.home-slides.index')->with('status', 'Slide deleted successfully.');
     }
 
-    protected function validatedData(Request $request): array
+    protected function validatedData(Request $request, ?HomeSlide $homeSlide = null): array
     {
         $data = $request->validate([
             'title' => ['required', 'string', 'max:255'],
@@ -57,9 +57,17 @@ class HomeSlideController extends Controller
 
         if ($request->hasFile('background_image_file')) {
             $file = $request->file('background_image_file');
-            $directory = public_path('assets/uploads/home-slides');
+            $directory = $this->homeSlideUploadDirectory();
             if (! is_dir($directory)) {
-                mkdir($directory, 0777, true);
+                mkdir($directory, 0755, true);
+            }
+
+            $existingImagePath = $homeSlide?->background_image_path
+                ? $this->homeSlideUploadPath(basename($homeSlide->background_image_path))
+                : null;
+
+            if ($existingImagePath && file_exists($existingImagePath)) {
+                unlink($existingImagePath);
             }
 
             $filename = time() . '-' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
@@ -71,5 +79,17 @@ class HomeSlideController extends Controller
         $data['is_active'] = $request->boolean('is_active');
 
         return $data;
+    }
+
+    protected function homeSlideUploadDirectory(): string
+    {
+        return app()->environment('production')
+            ? base_path('../public_html/assets/uploads/home-slides')
+            : public_path('assets/uploads/home-slides');
+    }
+
+    protected function homeSlideUploadPath(string $filename): string
+    {
+        return $this->homeSlideUploadDirectory() . DIRECTORY_SEPARATOR . $filename;
     }
 }

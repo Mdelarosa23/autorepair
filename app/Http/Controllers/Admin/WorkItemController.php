@@ -77,10 +77,16 @@ class WorkItemController extends Controller
 
         if ($request->hasFile('image_file')) {
             $file = $request->file('image_file');
-            $directory = public_path('assets/uploads/works');
+            $directory = $this->workUploadDirectory();
             if (! is_dir($directory)) {
-                mkdir($directory, 0777, true);
+                mkdir($directory, 0755, true);
             }
+
+            $existingImagePath = $item?->image_path ? $this->workUploadPath(basename($item->image_path)) : null;
+            if ($existingImagePath && file_exists($existingImagePath)) {
+                unlink($existingImagePath);
+            }
+
             $filename = time() . '-' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
             $file->move($directory, $filename);
             $data['image_path'] = 'assets/uploads/works/' . $filename;
@@ -94,5 +100,17 @@ class WorkItemController extends Controller
         $data['is_active'] = $request->boolean('is_active');
 
         return $data;
+    }
+
+    protected function workUploadDirectory(): string
+    {
+        return app()->environment('production')
+            ? base_path('../public_html/assets/uploads/works')
+            : public_path('assets/uploads/works');
+    }
+
+    protected function workUploadPath(string $filename): string
+    {
+        return $this->workUploadDirectory() . DIRECTORY_SEPARATOR . $filename;
     }
 }

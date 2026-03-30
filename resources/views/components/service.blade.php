@@ -13,7 +13,7 @@
         <div class="row justify-content-center">
             @forelse ($services as $service)
                 @php($path = $service->image_path ?? '')
-                @php($imageUrl = $path ? (str_starts_with($path, 'assets/img/') ? asset('mads-template/' . ltrim($path, '/')) : asset(ltrim($path, '/'))) : asset('mads-template/assets/img/home-one/service/1.jpg'))
+                @php($imageUrl = $path ? (str_starts_with($path, 'assets/img/') ? asset(ltrim($path, '/')) : asset(ltrim($path, '/'))) : asset('assets/img/home-one/service/1.jpg'))
                 <div class="col-sm-6 col-lg-3">
                     <a href="{{ $service->link_url ?: '#services' }}">
                         <div class="service-item">

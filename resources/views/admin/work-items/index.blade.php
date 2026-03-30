@@ -65,7 +65,7 @@
                             <tbody>
                                 @foreach ($items as $item)
                                     @php($path = $item->image_path)
-                                    @php($imageUrl = str_starts_with($path, 'assets/img/') ? asset('mads-template/' . ltrim($path, '/')) : asset(ltrim($path, '/')))
+                                    @php($imageUrl = str_starts_with($path, 'assets/img/') ? asset(ltrim($path, '/')) : asset(ltrim($path, '/')))
                                     @php($categoryKey = $resolveCategory($item->filter_classes))
                                     <tr
                                         data-search-row="{{ strtolower(($item->title ?: '') . ' ' . $categoryLabels[$categoryKey]) }}"

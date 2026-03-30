@@ -63,20 +63,55 @@ class ServiceController extends Controller
 
         if ($request->hasFile('image_file')) {
             $file = $request->file('image_file');
-            $directory = public_path('assets/uploads/services');
-            if (! is_dir($directory)) {
-                mkdir($directory, 0777, true);
+            $directory = $this->serviceUploadDirectory();
+
+            if (!is_dir($directory)) {
+                mkdir($directory, 0755, true);
             }
-            $filename = time() . '-' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
+
+            // DELETE OLD IMAGE
+            $existingImagePath = $service?->image_path ? $this->serviceUploadPath(basename($service->image_path)) : null;
+            if ($existingImagePath && file_exists($existingImagePath)) {
+                unlink($existingImagePath);
+            }
+
+            $filename = time() . '-' . Str::slug(
+                pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)
+            ) . '.' . $file->getClientOriginalExtension();
+
             $file->move($directory, $filename);
+
             $data['image_path'] = 'assets/uploads/services/' . $filename;
-        } elseif ($service) {
-            $data['image_path'] = $service->image_path;
         }
+
+        // if ($request->hasFile('image_file')) {
+        //     $file = $request->file('image_file');
+        //     $directory = public_path('assets/uploads/services');
+        //     if (! is_dir($directory)) {
+        //         mkdir($directory, 0777, true);
+        //     }
+        //     $filename = time() . '-' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
+        //     $file->move($directory, $filename);
+        //     $data['image_path'] = 'assets/uploads/services/' . $filename;
+        // } elseif ($service) {
+        //     $data['image_path'] = $service->image_path;
+        // }
 
         unset($data['image_file']);
         $data['is_active'] = $request->boolean('is_active');
 
         return $data;
+    }
+
+    protected function serviceUploadDirectory(): string
+    {
+        return app()->environment('production')
+            ? base_path('../public_html/assets/uploads/services')
+            : public_path('assets/uploads/services');
+    }
+
+    protected function serviceUploadPath(string $filename): string
+    {
+        return $this->serviceUploadDirectory() . DIRECTORY_SEPARATOR . $filename;
     }
 }
