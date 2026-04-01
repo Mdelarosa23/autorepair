@@ -481,6 +481,10 @@ button:focus {
 .service-item:hover .service-content i {
   color: #ffffff;
 }
+
+.service-item:hover .service-content a {
+  color: #ffffff !important;
+}
 .service-item:hover .service-content .service-icon {
   color: #ffffff;
 }
@@ -1791,7 +1795,7 @@ footer .footer-img {
 .banner-call .banner-call-content h3 {
   margin-bottom: 0;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 26px;
   color: #ffffff;
 }
 .banner-call .cmn-btn {

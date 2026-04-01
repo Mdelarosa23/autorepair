@@ -15,6 +15,13 @@
             <div class="col-lg-9 p-0">
                 <div class="feature-content">
                     <h2>Why Us</h2>
+                    {{-- <div class="feature-warranty" style="display:inline-flex;align-items:center;gap:14px;margin:0 0 28px;padding:14px 18px;border-radius:16px;background:rgba(253, 184, 25, 0.12);border:1px solid rgba(253, 184, 25, 0.3);">
+                        <i class='bx bxs-badge-check' style="font-size:32px;color:var(--theme-accent);"></i>
+                        <div>
+                            <strong style="display:block;color:#111827;">Warranty Coverage</strong>
+                            <span></span>
+                        </div>
+                    </div> --}}
                     <div class="feature-columns">
                         @foreach ($items->chunk(ceil(max($items->count(), 1) / 2)) as $chunk)
                             <ul class="feature-list">

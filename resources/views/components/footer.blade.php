@@ -13,13 +13,13 @@
                 </p>
 
                 <div class="cmn-btn">
-                    <a class="banner-btn-left" href="tel:123456789" style="color: #fdb819;background: #ffffff;font-size: 20px;padding-right: 25px;padding-left: 25px;padding-top: 20px;padding-bottom: 20px">
+                    <a class="banner-btn-left" href="{{ $siteContact['call_now_href'] }}" style="color: #fdb819;background: #ffffff;font-size: 20px;padding-right: 25px;padding-left: 25px;padding-top: 20px;padding-bottom: 20px">
                         <i class='bx bx-phone-call'></i>
-                        CALL NOW - (615) 705-0737
+                        CALL NOW - {{ $siteContact['call_now_number'] }}
                     </a>
-                    <a class="banner-btn-left" href="https://public.towbook.com/PO3A" target="_blank" style="font-size: 20px;padding-right: 25px;padding-left: 25px;padding-top: 20px;padding-bottom: 20px">
+                    <a class="banner-btn-left" href="{{ $siteContact['request_tow_url'] }}" target="_blank" style="font-size: 20px;padding-right: 25px;padding-left: 25px;padding-top: 20px;padding-bottom: 20px">
                         <i class='bx bxs-truck'></i>
-                        REQUEST A TOW
+                        {{ $siteContact['request_tow_label'] }}
                     </a>
 
                 </div>
@@ -33,17 +33,17 @@
 
                 <div class="col-md-4">
                     <h4><i class='bx bxs-phone'></i> Contact</h4>
-                    <p>(615) 705-0737<br>repairmads@gmail.com</p>
+                    <p>{{ $siteContact['call_now_number'] }}<br>repairmads@gmail.com</p>
                 </div>
 
                 <div class="col-md-4">
                     <h4><i class='bx bxs-time'></i> Hours</h4>
-                    <p>Mon–Sat: 8AM – 6PM<br>Towing: 8AM – 8PM</p>
+                    <p>{{ $siteContact['working_hours'] }}</p>
                 </div>
             </div>
 
             <div class="copyright-area text-center">
-                <p>© 2026 Mads Auto Repair. All rights reserved. | 1206 Gallatin Pike S, Madison, TN 37115.</p>
+                <p>&copy; 2026 Mads Auto Repair. All rights reserved. | 1206 Gallatin Pike S, Madison, TN 37115.</p>
             </div>
         </div>
     </footer>

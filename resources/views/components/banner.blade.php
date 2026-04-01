@@ -25,16 +25,16 @@
                                     </h1>
                                     <p>{{ $slide->description }}</p>
                                     <div class="cmn-btn">
-                                        @if ($slide->primary_label && $slide->primary_url)
-                                            <a class="banner-btn-left" href="{{ $slide->primary_url }}">
+                                        @if ($siteContact['call_now_number'])
+                                            <a class="banner-btn-left" href="{{ $siteContact['call_now_href'] }}">
                                                 <i class='bx bx-phone-call'></i>
-                                                {{ $slide->primary_label }}
+                                                {{ $siteContact['call_now_number'] }}
                                             </a>
                                         @endif
-                                        @if ($slide->secondary_label && $slide->secondary_url)
-                                            <a class="banner-btn-right" href="{{ $slide->secondary_url }}" target="_blank">
+                                        @if ($siteContact['request_tow_url'])
+                                            <a class="banner-btn-right" href="{{ $siteContact['request_tow_url'] }}" target="_blank">
                                                 <i class='bx bxs-truck'></i>
-                                                {{ $slide->secondary_label }}
+                                                {{ $siteContact['request_tow_label'] }}
                                             </a>
                                         @endif
                                     </div>

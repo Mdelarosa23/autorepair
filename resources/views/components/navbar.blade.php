@@ -35,11 +35,11 @@
                         </ul>
                     </div>
                     <div class="cmn-btn">
-                        <a class="banner-btn-left" href="https://public.towbook.com/PO3A" target="_blank">
+                        <a class="banner-btn-left" href="{{ $siteContact['request_tow_url'] }}" target="_blank">
                             <i class='bx bxs-truck'></i>
-                            REQUEST NOW
+                            {{ $siteContact['request_tow_label'] }}
                         </a>
-                        <a class="banner-btn-left" href="tel:123456789" style="color: #fdb819;background: #ffffff">
+                        <a class="banner-btn-left" href="{{ $siteContact['call_now_href'] }}" style="color: #fdb819;background: #ffffff">
                             <i class='bx bx-phone-call'></i>
                             CALL NOW
                         </a>

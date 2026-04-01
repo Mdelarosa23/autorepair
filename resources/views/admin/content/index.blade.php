@@ -30,11 +30,21 @@
                     <div class="content-grid" style="margin-top: 24px;">
                         @foreach ($sections as $key => $section)
                             @php
-                                $sectionUrl = $key === 'services' ? route('admin.services.index') : route('admin.content', $key);
+                                $sectionUrl = match ($key) {
+                                    'services' => route('admin.services.index'),
+                                    'contact-cta' => route('admin.contact-settings.edit'),
+                                    default => route('admin.content', $key),
+                                };
                             @endphp
                             <div class="content-card">
                                 <h3>{{ $section['title'] }}</h3>
                                 <p>{{ $section['description'] }}</p>
+                                @if ($key === 'contact-cta' && ! empty($section['summary']))
+                                    <p class="table-muted" style="margin-top:12px;">
+                                        Call: {{ $section['summary']['call_now_number'] }}<br>
+                                        Towing: {{ $section['summary']['towing_service_number'] }}
+                                    </p>
+                                @endif
                                 <a href="{{ $sectionUrl }}">{{ $selectedKey === $key ? 'Currently Viewing' : 'Open Section' }}</a>
                             </div>
                         @endforeach

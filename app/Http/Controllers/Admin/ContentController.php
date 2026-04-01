@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\SiteSetting;
 
 class ContentController extends Controller
 {
@@ -44,6 +45,13 @@ class ContentController extends Controller
                 'description' => 'Edit the common questions and answers customers read before getting in touch.',
                 'manage_url' => route('admin.faq-items.index'),
                 'manage_label' => 'Manage FAQ',
+            ],
+            'contact-cta' => [
+                'title' => 'Contact & CTA',
+                'description' => 'Manage the main call number, towing link, towing service phone number, and working hours used across the website.',
+                'manage_url' => route('admin.contact-settings.edit'),
+                'manage_label' => 'Manage Contact & CTA',
+                'summary' => SiteSetting::contactSettings(),
             ],
         ];
 

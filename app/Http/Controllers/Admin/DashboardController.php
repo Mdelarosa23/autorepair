@@ -15,6 +15,7 @@ class DashboardController extends Controller
             ['label' => 'Why Us', 'slug' => 'why-us'],
             ['label' => 'Works', 'slug' => 'works'],
             ['label' => 'FAQ', 'slug' => 'faq'],
+            ['label' => 'Contact & CTA', 'slug' => 'contact-cta'],
         ];
 
         return view('admin.dashboard', [

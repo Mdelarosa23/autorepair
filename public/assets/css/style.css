@@ -476,6 +476,7 @@ button:focus {
 }
 .service-item a {
   display: block;
+    color: #ffffff !important;
 }
 .service-item .service-content {
   background-color: #000000;

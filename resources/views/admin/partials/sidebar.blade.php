@@ -5,7 +5,8 @@
         || request()->routeIs('admin.process-steps.*')
         || request()->routeIs('admin.why-us.*')
         || request()->routeIs('admin.work-items.*')
-        || request()->routeIs('admin.faq-items.*');
+        || request()->routeIs('admin.faq-items.*')
+        || request()->routeIs('admin.contact-settings.*');
     $currentSection = request()->route('section');
     $contentSections = $contentSections ?? [
         ['label' => 'Home Slider', 'slug' => 'home-slider'],
@@ -14,6 +15,7 @@
         ['label' => 'Why Us', 'slug' => 'why-us'],
         ['label' => 'Works', 'slug' => 'works'],
         ['label' => 'FAQ', 'slug' => 'faq'],
+        ['label' => 'Contact & CTA', 'slug' => 'contact-cta'],
     ];
 
     $routeMap = [
@@ -23,6 +25,7 @@
         'why-us' => 'admin.why-us.index',
         'works' => 'admin.work-items.index',
         'faq' => 'admin.faq-items.index',
+        'contact-cta' => 'admin.contact-settings.edit',
     ];
 @endphp
 

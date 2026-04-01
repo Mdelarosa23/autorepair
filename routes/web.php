@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\ContentController;
+use App\Http\Controllers\Admin\ContactSettingsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FaqItemController;
 use App\Http\Controllers\Admin\HomeSlideController;
@@ -69,6 +70,9 @@ Route::prefix('admin')->group(function () {
         Route::get('/faq-items/{faqItem}/edit', [FaqItemController::class, 'edit'])->name('admin.faq-items.edit');
         Route::put('/faq-items/{faqItem}', [FaqItemController::class, 'update'])->name('admin.faq-items.update');
         Route::delete('/faq-items/{faqItem}', [FaqItemController::class, 'destroy'])->name('admin.faq-items.destroy');
+
+        Route::get('/contact-settings', [ContactSettingsController::class, 'edit'])->name('admin.contact-settings.edit');
+        Route::post('/contact-settings', [ContactSettingsController::class, 'update'])->name('admin.contact-settings.update');
 
         Route::get('/theme', [ThemeController::class, 'edit'])->name('admin.theme.edit');
         Route::post('/theme', [ThemeController::class, 'update'])->name('admin.theme.update');
