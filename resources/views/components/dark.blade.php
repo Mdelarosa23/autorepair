@@ -31,7 +31,7 @@
         margin: auto 0;
         transition: 0.4s;
         box-shadow: 0 0px 15px rgba(32, 32, 32, 0.2392156863);
-        background: white url("../img/night.png");
+        background: white url("/assets/img/night.png");
         background-repeat: no-repeat;
         background-position: center;
     }
@@ -68,7 +68,7 @@
 
     .switch-box input:checked+.slider:before {
         transform: translateX(24px);
-        background: white url("../img/sunny.png");
+        background: white url("/assets/img/sunny.png");
         background-repeat: no-repeat;
         background-position: center;
     }

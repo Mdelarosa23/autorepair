@@ -27,7 +27,7 @@
                                 <h3>{{ $service->title }}</h3>
                                 <p>{{ $service->description }}</p>
                                 @if ($isTowingService)
-                                    <a href="{{ $siteContact['request_tow_url'] }}" target="_blank" style="margin-top: 10px; font-weight: 700; color: var(--theme-accent);">
+                                    <a href="tel:+{{ $siteContact['towing_service_number'] }}" target="_blank" style="margin-top: 10px; font-weight: 700; color: var(--theme-accent);">
                                         Call {{ $siteContact['towing_service_number'] }}
                                     </a>
                                 @endif

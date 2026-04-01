@@ -8,9 +8,9 @@
                     <h1 class="page-title">Contact & CTA</h1>
                     <p class="page-subtitle">Update the shared phone numbers, tow request link, and working hours used across the public site.</p>
                 </div>
-                <div class="user-badge">
+                {{-- <div class="user-badge">
                     Shared website settings
-                </div>
+                </div> --}}
             </div>
 
             <section class="panel">
@@ -49,7 +49,7 @@
                                     <label for="working_hours">Working Hours</label>
                                     <input id="working_hours" type="text" name="working_hours" value="{{ old('working_hours', $settings['working_hours']) }}" required>
                                 </div>
-                                <p class="table-muted" style="margin-top:12px;">Use a simple text string, for example: Mon-Fri: 8:30am-6:00pm.</p>
+                                {{-- <p class="table-muted" style="margin-top:12px;">Use a simple text string, for example: Mon-Fri: 8:30am-6:00pm.</p> --}}
                             </div>
                         </div>
 
@@ -59,7 +59,7 @@
                             @enderror
                         @endforeach
 
-                        <button type="submit" class="primary-btn" style="max-width:260px;">Save Contact Settings</button>
+                        <button type="submit" class="primary-btn" style="max-width:260px;">Save Settings</button>
                     </form>
                 </div>
             </section>

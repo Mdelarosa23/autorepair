@@ -11,7 +11,10 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\Admin\WhyUsItemController;
 use App\Http\Controllers\Admin\WorkItemController;
+use App\Models\HomeSlide;
+use App\Models\SiteSetting;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 Route::get('/api/health', function () {
     return response()->json([
@@ -22,7 +25,41 @@ Route::get('/api/health', function () {
     ]);
 });
 
-Route::view('/', 'home');
+Route::get('/', function () {
+    $firstSlide = HomeSlide::publicItems()->first();
+
+    return view('home', [
+        'seo' => [
+            'title' => SiteSetting::seoDefaults()['title'],
+            'description' => Str::limit(
+                trim((string) ($firstSlide->description ?? '')) ?: SiteSetting::seoDefaults()['description'],
+                155
+            ),
+            'canonical' => url('/'),
+        ],
+    ]);
+});
+
+Route::get('/robots.txt', function () {
+    return response("User-agent: *\nAllow: /\n\nSitemap: " . url('/sitemap.xml') . "\n", 200)
+        ->header('Content-Type', 'text/plain; charset=UTF-8');
+});
+
+Route::get('/sitemap.xml', function () {
+    $lastModified = optional(HomeSlide::query()->latest('updated_at')->first())->updated_at?->toAtomString()
+        ?? now()->toAtomString();
+
+    return response()->view('sitemap', [
+        'urls' => [
+            [
+                'loc' => url('/'),
+                'lastmod' => $lastModified,
+                'changefreq' => 'weekly',
+                'priority' => '1.0',
+            ],
+        ],
+    ])->header('Content-Type', 'application/xml; charset=UTF-8');
+});
 Route::redirect('/login', '/admin/login')->name('login');
 
 Route::prefix('admin')->group(function () {

@@ -3345,4 +3345,14 @@ footer .footer-img {
     margin-right: 8px;
     color: var(--theme-accent);
 }
+@media only screen and (max-width: 767px) {
+  .mobile-nav .logo img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: 40px;
+  }
+
+    
+}
 </style>

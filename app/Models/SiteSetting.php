@@ -58,6 +58,42 @@ class SiteSetting extends Model
         ];
     }
 
+    public static function businessProfile(): array
+    {
+        $contact = static::contactSettings();
+
+        return [
+            'name' => 'Mads Auto Repair',
+            'email' => 'repairmads@gmail.com',
+            'street_address' => '1206 Gallatin Pike S',
+            'city' => 'Madison',
+            'state' => 'TN',
+            'postal_code' => '37115',
+            'country' => 'US',
+            'phone' => $contact['call_now_number'],
+            'phone_href' => $contact['call_now_href'],
+            'hours' => $contact['working_hours'],
+        ];
+    }
+
+    public static function seoDefaults(): array
+    {
+        $business = static::businessProfile();
+
+        return [
+            'title' => sprintf(
+                '%s | Honest Auto Repair & Towing in %s, %s',
+                $business['name'],
+                $business['city'],
+                $business['state']
+            ),
+            'description' => 'Honest auto repair, diagnostics, maintenance, and towing support for drivers in Madison and the greater Nashville area.',
+            'keywords' => 'auto repair Madison TN, towing Madison TN, mechanic Madison TN, brake repair, engine diagnostics, Nashville auto shop',
+            'type' => 'website',
+            'image' => asset('assets/img/logo.png'),
+        ];
+    }
+
     protected static function phoneHref(?string $number): string
     {
         $digits = preg_replace('/\D+/', '', (string) $number) ?? '';
