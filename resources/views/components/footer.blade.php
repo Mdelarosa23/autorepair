@@ -13,11 +13,11 @@
                 </p>
 
                 <div class="cmn-btn">
-                    <a class="banner-btn-left" href="{{ $siteContact['call_now_href'] }}" style="color: #fdb819;background: #ffffff;font-size: 20px;padding-right: 25px;padding-left: 25px;padding-top: 20px;padding-bottom: 20px">
+                    <a class="banner-btn-left footerbtn" href="{{ $siteContact['call_now_href'] }}" style="color: #fdb819;background: #ffffff;font-size: 20px;padding-right: 25px;padding-left: 25px;padding-top: 20px;padding-bottom: 20px">
                         <i class='bx bx-phone-call'></i>
                         CALL NOW - {{ $siteContact['call_now_number'] }}
                     </a>
-                    <a class="banner-btn-left" href="{{ $siteContact['request_tow_url'] }}" target="_blank" style="font-size: 20px;padding-right: 25px;padding-left: 25px;padding-top: 20px;padding-bottom: 20px">
+                    <a class="banner-btn-left footerbtn" href="{{ $siteContact['request_tow_url'] }}" target="_blank" style="font-size: 20px;padding-right: 25px;padding-left: 25px;padding-top: 20px;padding-bottom: 20px">
                         <i class='bx bxs-truck'></i>
                         {{ $siteContact['request_tow_label'] }}
                     </a>

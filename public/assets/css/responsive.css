@@ -25,10 +25,23 @@
   }
   .mean-container .mean-bar {
     background-color: #fff;
+    min-height: 68px;
+  }
+  .mobile-nav {
+    min-height: 68px;
   }
   .mobile-nav .logo {
-    top: 9px;
-    max-width: 105px;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: calc(100% - 92px);
+    display: inline-flex;
+    align-items: center;
+  }
+  .mobile-nav .logo img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: 44px;
   }
   .mean-container a.meanmenu-reveal span {
     background: #fdb819;
@@ -38,6 +51,10 @@
   }
   .mean-container a.meanmenu-reveal {
     color: #fdb819;
+    width: 56px;
+    height: 56px;
+    padding: 0 15px 0 0;
+    top: 6px;
   }
   .mobile-nav.mean-container .mean-nav ul li a.active {
     color: #fdb819;
@@ -827,10 +844,23 @@
   }
   .mean-container .mean-bar {
     background-color: #fff;
+    min-height: 68px;
+  }
+  .mobile-nav {
+    min-height: 68px;
   }
   .mobile-nav .logo {
-    top: 9px;
-    max-width: 105px;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: calc(100% - 92px);
+    display: inline-flex;
+    align-items: center;
+  }
+  .mobile-nav .logo img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: 44px;
   }
   .mean-container a.meanmenu-reveal span {
     background: #fdb819;
@@ -840,6 +870,10 @@
   }
   .mean-container a.meanmenu-reveal {
     color: #fdb819;
+    width: 56px;
+    height: 56px;
+    padding: 0 15px 0 0;
+    top: 6px;
   }
   .mobile-nav.mean-container .mean-nav ul li a.active {
     color: #fdb819;
@@ -1594,6 +1628,7 @@
   }
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
+  
   .blog-item .blog-bottom ul li a {
     font-size: 12px;
   }
@@ -1679,6 +1714,13 @@
 }
 
 @media only screen and (max-width: 767px) {
+  .footer-cta p {
+    margin: 10px 25px 25px;
+  }
+  .footerbtn {
+    width: 100%;
+    margin-bottom: 15px;
+  }
   .feature-area .feature-content {
     padding-left: 20px;
     padding-right: 20px;
