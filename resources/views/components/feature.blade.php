@@ -9,7 +9,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-3 p-0">
                 <div class="feature-img">
-                    <img src="assets/img/home-one/feature-bg.jpg" alt="Feature">
+                    <img src="assets/img/whyus.png" alt="Feature">
                 </div>
             </div>
             <div class="col-lg-9 p-0">

@@ -14,7 +14,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: transparent;
+        background-color: white;
         border: 1.5px solid #ffffff;
         transition: 0.4s;
     }

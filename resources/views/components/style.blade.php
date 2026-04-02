@@ -704,7 +704,7 @@ button:focus {
 }
 .feature-area .feature-img {
   position: relative;
-  background-image: url("assets/img/home-one/feature-bg.jpg");
+  background-image: url("assets/img/whyus.png");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -1634,6 +1634,15 @@ footer .footer-img {
   max-width: 780px;
   margin-top: -80px;
   position: relative;
+}
+.banner-area-three .banner-text .bannerlogo {
+  margin-bottom: 24px;
+}
+.banner-area-three .banner-text .bannerlogo img {
+  display: block;
+  width: clamp(180px, 28vw, 340px);
+  max-width: 100%;
+  height: auto;
 }
 .banner-area-three .banner-text h1 {
   margin-bottom: 26px;
@@ -3346,13 +3355,70 @@ footer .footer-img {
     color: var(--theme-accent);
 }
 @media only screen and (max-width: 767px) {
+  .banner-area-three .banner-text {
+    margin-top: 0;
+    text-align: center;
+  }
+
+  .footerbtn {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .footer-cta p {
+    margin: 10px 25px 25px;
+  }
+
+  .banner-area-three .banner-text .bannerlogo {
+    margin-bottom: 18px;
+  }
+
+  .banner-area-three .banner-text .bannerlogo img {
+    width: min(62vw, 220px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .mobile-nav .logo img {
     display: block;
     width: auto;
     max-width: 100%;
     max-height: 40px;
   }
+}
 
-    
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .banner-area-three .banner-text {
+    margin-top: -20px;
+    text-align: left;
+  }
+
+  .mean-container a.meanmenu-reveal {
+    color: #fdb819;
+    width: 56px;
+    height: 56px;
+    padding: 0 15px 0 0;
+    top: 23px;
+  }
+
+  .banner-area-three .banner-text .bannerlogo {
+    margin-bottom: 20px;
+  }
+
+  .banner-area-three .banner-text .bannerlogo img {
+    width: min(30vw, 260px);
+  }
+
+  .mobile-nav .logo img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: 40px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .banner-area-three .banner-text .bannerlogo img {
+    width: min(24vw, 320px);
+  }
 }
 </style>
