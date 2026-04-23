@@ -45,6 +45,8 @@ class HomeSlideController extends Controller
         $data = $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'highlight_text' => ['nullable', 'string', 'max:255'],
+            'hook_message' => ['nullable', 'string', 'max:255'],
+            'hook_highlight_text' => ['nullable', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:1000'],
             'primary_label' => ['nullable', 'string', 'max:255'],
             'primary_url' => ['nullable', 'string', 'max:255'],

@@ -32,6 +32,7 @@
                             @php
                                 $sectionUrl = match ($key) {
                                     'services' => route('admin.services.index'),
+                                    'about-us' => route('admin.about-us.edit'),
                                     'contact-cta' => route('admin.contact-settings.edit'),
                                     default => route('admin.content', $key),
                                 };
@@ -43,6 +44,12 @@
                                     <p class="table-muted" style="margin-top:12px;">
                                         Call: {{ $section['summary']['call_now_number'] }}<br>
                                         Towing: {{ $section['summary']['towing_service_number'] }}
+                                    </p>
+                                @endif
+                                @if ($key === 'about-us' && ! empty($section['summary']))
+                                    <p class="table-muted" style="margin-top:12px;">
+                                        Mission: {{ \Illuminate\Support\Str::limit($section['summary']['about_mission'], 70) }}<br>
+                                        Vision: {{ \Illuminate\Support\Str::limit($section['summary']['about_vision'], 70) }}
                                     </p>
                                 @endif
                                 <a href="{{ $sectionUrl }}">{{ $selectedKey === $key ? 'Currently Viewing' : 'Open Section' }}</a>

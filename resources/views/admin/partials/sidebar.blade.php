@@ -5,6 +5,7 @@
         || request()->routeIs('admin.process-steps.*')
         || request()->routeIs('admin.why-us.*')
         || request()->routeIs('admin.work-items.*')
+        || request()->routeIs('admin.about-us.*')
         || request()->routeIs('admin.faq-items.*')
         || request()->routeIs('admin.contact-settings.*');
     $currentSection = request()->route('section');
@@ -14,6 +15,7 @@
         ['label' => 'Services', 'slug' => 'services'],
         ['label' => 'Why Us', 'slug' => 'why-us'],
         ['label' => 'Works', 'slug' => 'works'],
+        ['label' => 'About Us', 'slug' => 'about-us'],
         ['label' => 'FAQ', 'slug' => 'faq'],
         ['label' => 'Contact & CTA', 'slug' => 'contact-cta'],
     ];
@@ -24,6 +26,7 @@
         'services' => 'admin.services.index',
         'why-us' => 'admin.why-us.index',
         'works' => 'admin.work-items.index',
+        'about-us' => 'admin.about-us.edit',
         'faq' => 'admin.faq-items.index',
         'contact-cta' => 'admin.contact-settings.edit',
     ];
@@ -60,6 +63,9 @@
 
         <a href="{{ route('admin.theme.edit') }}" class="nav-link {{ request()->routeIs('admin.theme.*') ? 'active' : '' }}">
             <span>Theme Colors</span>
+        </a>
+        <a href="{{ route('admin.password.edit') }}" class="nav-link {{ request()->routeIs('admin.password.*') ? 'active' : '' }}">
+            <span>Change Password</span>
         </a>
     </nav>
 

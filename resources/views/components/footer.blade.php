@@ -38,13 +38,18 @@
 
                 <div class="col-md-4">
                     <h4><i class='bx bxs-time'></i> Hours</h4>
-                    <p>{{ $siteContact['working_hours'] }}</p>
+                    <p>
+                        Mechanic Shop: 
+                        {!! nl2br(e($siteContact['working_hours'])) !!}<br>
+                        Towing: 
+                        {!! nl2br(e($siteContact['towing_hours'])) !!}
+                    </p>
                 </div>
             </div>
 
-            <div class="copyright-area text-center">
+            {{-- <div class="copyright-area text-center">
                 <p>&copy; 2026 Mads Auto Repair. All rights reserved. | 1206 Gallatin Pike S, Madison, TN 37115.</p>
-            </div>
+            </div> --}}
         </div>
     </footer>
     <!-- End Footer -->

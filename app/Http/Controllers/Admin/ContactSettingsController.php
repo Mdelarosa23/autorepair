@@ -25,6 +25,7 @@ class ContactSettingsController extends Controller
             'request_tow_url' => ['required', 'url', 'max:255'],
             'towing_service_number' => ['required', 'string', 'max:255'],
             'working_hours' => ['required', 'string', 'max:255'],
+            'towing_hours' => ['required', 'string', 'max:255'],
         ]);
 
         foreach ($data as $key => $value) {

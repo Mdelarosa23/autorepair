@@ -90,7 +90,7 @@
                         <div class="field full"><label>Description</label><textarea name="description">{{ old('description') }}</textarea></div>
                         <div class="field full"><label>Icon</label>@include('admin.partials.icon-picker', ['name' => 'icon_class', 'selected' => old('icon_class', 'bx bxs-wrench')])</div>
                         <div class="field"><label>Image File</label><input type="file" name="image_file" accept="image/*" data-file-input="#service-create-file-name"><div class="file-meta" id="service-create-file-name" data-empty-label="No file selected">No file selected</div></div>
-                        <div class="field"><label>Link URL</label><input type="text" name="link_url" value="{{ old('link_url', '#services') }}"></div>
+                        {{-- <div class="field"><label>Link URL</label><input type="text" name="link_url" value="{{ old('link_url', '#services') }}"></div> --}}
                     </div>
                     <label class="checkbox-row"><input type="checkbox" name="is_active" value="1" {{ old('is_active', '1') ? 'checked' : '' }}><span>Show this service on the public site</span></label>
                     <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:22px;"><button type="button" class="ghost-btn" data-modal-close>Cancel</button><button type="submit" class="primary-btn">Save Service</button></div>
@@ -113,7 +113,7 @@
                             <div class="field full"><label>Description</label><textarea name="description">{{ old('description', $editingService->description) }}</textarea></div>
                             <div class="field full"><label>Icon</label>@include('admin.partials.icon-picker', ['name' => 'icon_class', 'selected' => old('icon_class', $editingService->icon_class)])</div>
                             <div class="field"><label>Replace Image</label><input type="file" name="image_file" accept="image/*" data-file-input="#service-edit-file-name"><div class="file-meta" id="service-edit-file-name" data-empty-label="Current: {{ $editingService->image_path ?: 'No image selected' }}">Current: {{ $editingService->image_path ?: 'No image selected' }}</div></div>
-                            <div class="field"><label>Link URL</label><input type="text" name="link_url" value="{{ old('link_url', $editingService->link_url) }}"></div>
+                            {{-- <div class="field"><label>Link URL</label><input type="text" name="link_url" value="{{ old('link_url', $editingService->link_url) }}"></div> --}}
                         </div>
                         <label class="checkbox-row"><input type="checkbox" name="is_active" value="1" {{ old('is_active', $editingService->is_active) ? 'checked' : '' }}><span>Show this service on the public site</span></label>
                         <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:22px;"><a href="{{ route('admin.services.index') }}" class="ghost-btn">Cancel</a><button type="submit" class="primary-btn">Update Service</button></div>

@@ -7,6 +7,9 @@
         @php($backgroundUrl = $backgroundPath ? asset(ltrim($backgroundPath, '/')) : null)
         @php($highlightText = trim((string) ($slide->highlight_text ?? '')))
         @php($titleParts = $highlightText !== '' ? preg_split('/' . preg_quote($highlightText, '/') . '/', $slide->title, 2) : false)
+        @php($hookMessage = trim((string) ($slide->hook_message ?? '')))
+        @php($hookHighlightText = trim((string) ($slide->hook_highlight_text ?? '')))
+        @php($hookParts = $hookHighlightText !== '' && $hookMessage !== '' ? preg_split('/' . preg_quote($hookHighlightText, '/') . '/', $hookMessage, 2) : false)
         <div class="banner-area-three {{ $backgroundUrl ? '' : 'banner-img-one' }}"
             @if ($backgroundUrl) style="background-image: url('{{ $backgroundUrl }}');" @endif>
             <div class="d-table">
@@ -29,19 +32,33 @@
                                             {{ $slide->title }}
                                         @endif
                                     </h1>
+
                                     <p>{{ $slide->description }}</p>
-                                    <div class="cmn-btn">
-                                        @if ($siteContact['call_now_number'])
-                                            <a class="banner-btn-left" href="{{ $siteContact['call_now_href'] }}">
-                                                <i class='bx bx-phone-call'></i>
-                                                {{ $siteContact['call_now_number'] }}
+                                    @if ($hookMessage !== '')
+                                        <p style="font-size: 20px;margin-bottom: 20px">
+                                            @if ($hookParts !== false && count($hookParts) === 2)
+                                                {{ $hookParts[0] }}<b
+                                                    style="color: var(--theme-accent);">{{ $hookHighlightText }}</b>{{ $hookParts[1] }}
+                                            @elseif ($hookHighlightText !== '')
+                                                <b style="color: var(--theme-accent);">{{ $hookHighlightText }}</b>
+                                                {{ $hookMessage }}
+                                            @else
+                                                {{ $hookMessage }}
+                                            @endif
+                                        </p>
+                                    @endif
+                                    <div class="cmn-btn" style="margin-bottom: 20px;">
+                                        @if ($slide->primary_label && $slide->primary_url)
+                                            <a class="banner-btn-left" target="_blank" href="{{ $slide->primary_url }}">
+                                                <i class='bx bxs-truck'></i>
+                                                {{ $slide->primary_label }}
                                             </a>
                                         @endif
-                                        @if ($siteContact['request_tow_url'])
-                                            <a class="banner-btn-right" href="{{ $siteContact['request_tow_url'] }}"
-                                                target="_blank">
-                                                <i class='bx bxs-truck'></i>
-                                                {{ $siteContact['request_tow_label'] }}
+                                        @if ($slide->secondary_label && $slide->secondary_url)
+                                            <a class="banner-btn-right" href="{{ $slide->secondary_url }}"
+                                                target="_blank" rel="noopener noreferrer">
+                                                {{-- <i class='bx bxs-truck'></i> --}}
+                                                {{ $slide->secondary_label }}
                                             </a>
                                         @endif
                                     </div>

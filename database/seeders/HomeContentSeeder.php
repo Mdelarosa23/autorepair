@@ -17,6 +17,8 @@ class HomeContentSeeder extends Seeder
             [
                 'title' => "Nashville's Most Trusted Auto Repair",
                 'highlight_text' => 'Trusted',
+                'hook_message' => 'NEED A TOW? CALL US NOW (615-705-4200)',
+                'hook_highlight_text' => 'CALL US NOW',
                 'description' => 'Honest repairs. Fair prices. Same-day service when you need it most. Domestic and foreign vehicles, we handle it all.',
                 'primary_label' => '(615) 705-0737',
                 'primary_url' => 'tel:+6157050737',

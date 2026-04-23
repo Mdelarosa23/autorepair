@@ -701,6 +701,7 @@ button:focus {
   background-color: #000000;
   position: relative;
   overflow: hidden;
+  margin-bottom: 30px;
 }
 .feature-area .feature-img {
   position: relative;
@@ -1364,7 +1365,7 @@ footer .footer-img {
   position: absolute;
   left: 0;
   right: 0;
-  top: 190px;
+  /* top: 150px; */
   opacity: 0.2;
   max-width: 680px;
   margin-left: auto;
@@ -2883,6 +2884,55 @@ footer .footer-img {
 }
 
 /*----- End Sign In CSS -----*/
+/*----- About CSS -----*/
+.about-area {
+  background-color: #f6f4f4;
+}
+.about-area .section-title {
+  margin-bottom: 40px;
+}
+.about-area .about-media {
+  height: calc(100% - 30px);
+  margin-bottom: 30px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0px 14px 34px rgba(0, 0, 0, 0.12);
+}
+.about-area .about-media img {
+  width: 100%;
+  height: 100%;
+  min-height: 460px;
+  object-fit: cover;
+}
+.about-area .about-copy {
+  margin-bottom: 30px;
+}
+.about-area .about-card {
+  background-color: #ffffff;
+  border-left: 4px solid var(--theme-accent);
+  border-radius: 12px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.06);
+  padding: 24px 20px;
+  margin-bottom: 20px;
+}
+.about-area .about-card:last-child {
+  margin-bottom: 0;
+}
+.about-area .about-card h3 {
+  font-weight: 600;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.about-area .about-card p {
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 991px) {
+  .about-area .about-media img {
+    min-height: 320px;
+  }
+}
+/*----- End About CSS -----*/
 /*----- FAQ CSS -----*/
 .faq-area .faq-head h2 {
   margin-bottom: 35px;

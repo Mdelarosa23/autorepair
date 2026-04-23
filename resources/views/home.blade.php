@@ -12,6 +12,7 @@
         @include('components.service')
         @include('components.feature')
         @include('components.work')
+        @include('components.about')
         @include('components.faq')
         @include('components.footer')
         @include('components.scripts')

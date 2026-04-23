@@ -22,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::share('siteContact', SiteSetting::contactSettings());
+        View::share('siteAboutUs', SiteSetting::aboutUsSettings());
         View::share('siteBusiness', SiteSetting::businessProfile());
         View::share('siteSeoDefaults', SiteSetting::seoDefaults());
     }

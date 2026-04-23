@@ -1,6 +1,173 @@
 <x-admin.layouts.app :title="'Manage Home Slider'">
     @php($editingItem = $editing)
-    <div class="admin-shell">@include('admin.partials.sidebar')<main class="main"><div class="topbar"><div><h1 class="page-title">Home Slider</h1><p class="page-subtitle">Manage homepage slides from a full-width table.</p></div><div class="user-badge">{{ $slides->count() }} slides</div></div>@if(session('status'))<div class="notice" style="margin-top:0;margin-bottom:18px;">{{ session('status') }}</div>@endif<section class="panel"><div class="panel-body"><div class="manager-toolbar"><button type="button" class="primary-btn" data-modal-target="slides-create-modal">Create Slide</button><label class="manager-search"><i class='bx bx-search'></i><input type="search" placeholder="Search slides..." data-search-input="#slides-table"></label></div><div class="table-wrap"><table class="manager-table" id="slides-table" data-sort-table><thead><tr><th><button type="button" class="sort-btn" data-sort-key="title">Title <i class='bx bx-sort'></i></button></th><th>Description</th><th>Background</th><th><button type="button" class="sort-btn" data-sort-key="order" data-sort-type="number">Order <i class='bx bx-sort'></i></button></th><th><button type="button" class="sort-btn" data-sort-key="status">Status <i class='bx bx-sort'></i></button></th><th>Actions</th></tr></thead><tbody>@foreach($slides as $slide)<tr data-search-row="{{ strtolower($slide->title . ' ' . $slide->description . ' ' . ($slide->background_image_path ?: 'default background')) }}" data-title="{{ strtolower($slide->title) }}" data-order="{{ $slide->sort_order }}" data-status="{{ $slide->is_active ? 'active' : 'hidden' }}"><td><strong>{{ $slide->title }}</strong><div class="table-muted">Highlight: {{ $slide->highlight_text ?: 'None' }}</div></td><td class="table-muted">{{ $slide->description }}</td><td>{{ $slide->background_image_path ? 'Image: ' . $slide->background_image_path : 'Default banner background' }}</td><td>{{ $slide->sort_order }}</td><td><span class="status-badge {{ $slide->is_active ? 'active' : 'hidden' }}">{{ $slide->is_active ? 'Active' : 'Hidden' }}</span></td><td><div class="actions"><a href="{{ route('admin.home-slides.edit', $slide) }}" class="secondary-btn">Edit</a><form method="POST" action="{{ route('admin.home-slides.destroy', $slide) }}" onsubmit="return confirm('Delete this slide?');">@csrf @method('DELETE')<button type="submit" class="danger-btn">Delete</button></form></div></td></tr>@endforeach</tbody></table></div></div></section></main></div>
-    <div class="modal-backdrop" id="slides-create-modal"><div class="modal-card"><div class="modal-header"><div><h2>Create Slide</h2></div><button type="button" class="modal-close" data-modal-close>&times;</button></div><div class="modal-body"><form method="POST" action="{{ route('admin.home-slides.store') }}" enctype="multipart/form-data">@csrf<div class="form-grid"><div class="field"><label>Title</label><input type="text" name="title" value="{{ old('title') }}" required></div><div class="field"><label>Highlighted Word</label><input type="text" name="highlight_text" value="{{ old('highlight_text') }}"></div><div class="field full"><label>Description</label><textarea name="description">{{ old('description') }}</textarea></div><div class="field"><label>Primary Label</label><input type="text" name="primary_label" value="{{ old('primary_label') }}"></div><div class="field"><label>Primary URL</label><input type="text" name="primary_url" value="{{ old('primary_url') }}"></div><div class="field"><label>Secondary Label</label><input type="text" name="secondary_label" value="{{ old('secondary_label') }}"></div><div class="field"><label>Secondary URL</label><input type="text" name="secondary_url" value="{{ old('secondary_url') }}"></div><div class="field"><label>Background Image</label><input type="file" name="background_image_file" accept="image/*"></div><div class="field"><label>Sort Order</label><input type="number" min="0" name="sort_order" value="{{ old('sort_order', $slides->count()+1) }}" required></div></div><label class="checkbox-row"><input type="checkbox" name="is_active" value="1" {{ old('is_active', '1') ? 'checked' : '' }}><span>Show this slide</span></label><div style="display:flex;justify-content:flex-end;gap:12px;margin-top:22px;"><button type="button" class="ghost-btn" data-modal-close>Cancel</button><button type="submit" class="primary-btn">Save Slide</button></div></form></div></div></div>
-    @if($editingItem)<div data-open-modal="slides-edit-modal"></div><div class="modal-backdrop" id="slides-edit-modal"><div class="modal-card"><div class="modal-header"><div><h2>Edit Slide</h2></div><a href="{{ route('admin.home-slides.index') }}" class="modal-close" style="display:inline-flex;align-items:center;justify-content:center;">&times;</a></div><div class="modal-body"><form method="POST" action="{{ route('admin.home-slides.update', $editingItem) }}" enctype="multipart/form-data">@csrf @method('PUT')<div class="form-grid"><div class="field"><label>Title</label><input type="text" name="title" value="{{ old('title', $editingItem->title) }}" required></div><div class="field"><label>Highlighted Word</label><input type="text" name="highlight_text" value="{{ old('highlight_text', $editingItem->highlight_text) }}"></div><div class="field full"><label>Description</label><textarea name="description">{{ old('description', $editingItem->description) }}</textarea></div><div class="field"><label>Primary Label</label><input type="text" name="primary_label" value="{{ old('primary_label', $editingItem->primary_label) }}"></div><div class="field"><label>Primary URL</label><input type="text" name="primary_url" value="{{ old('primary_url', $editingItem->primary_url) }}"></div><div class="field"><label>Secondary Label</label><input type="text" name="secondary_label" value="{{ old('secondary_label', $editingItem->secondary_label) }}"></div><div class="field"><label>Secondary URL</label><input type="text" name="secondary_url" value="{{ old('secondary_url', $editingItem->secondary_url) }}"></div><div class="field"><label>Background Image</label><input type="file" name="background_image_file" accept="image/*"><small style="display:block;margin-top:6px;color:#6b7280;">{{ $editingItem->background_image_path ? 'Current: ' . $editingItem->background_image_path : 'No uploaded image yet.' }}</small></div><div class="field"><label>Sort Order</label><input type="number" min="0" name="sort_order" value="{{ old('sort_order', $editingItem->sort_order) }}" required></div></div><label class="checkbox-row"><input type="checkbox" name="is_active" value="1" {{ old('is_active', $editingItem->is_active) ? 'checked' : '' }}><span>Show this slide</span></label><div style="display:flex;justify-content:flex-end;gap:12px;margin-top:22px;"><a href="{{ route('admin.home-slides.index') }}" class="ghost-btn">Cancel</a><button type="submit" class="primary-btn">Update Slide</button></div></form></div></div></div>@endif
+    <div class="admin-shell">@include('admin.partials.sidebar')<main class="main">
+            <div class="topbar">
+                <div>
+                    <h1 class="page-title">Home Slider</h1>
+                    <p class="page-subtitle">Manage homepage slides from a full-width table.</p>
+                </div>
+                <div class="user-badge">{{ $slides->count() }} slides</div>
+            </div>
+            @if (session('status'))
+                <div class="notice" style="margin-top:0;margin-bottom:18px;">{{ session('status') }}</div>
+            @endif
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="manager-toolbar"><button type="button" class="primary-btn"
+                            data-modal-target="slides-create-modal">Create Slide</button><label
+                            class="manager-search"><i class='bx bx-search'></i><input type="search"
+                                placeholder="Search slides..." data-search-input="#slides-table"></label></div>
+                    <div class="table-wrap">
+                        <table class="manager-table" id="slides-table" data-sort-table>
+                            <thead>
+                                <tr>
+                                    <th><button type="button" class="sort-btn" data-sort-key="title">Title <i
+                                                class='bx bx-sort'></i></button></th>
+                                    <th>Description</th>
+                                    <th>Background</th>
+                                    <th><button type="button" class="sort-btn" data-sort-key="order"
+                                            data-sort-type="number">Order <i class='bx bx-sort'></i></button></th>
+                                    <th><button type="button" class="sort-btn" data-sort-key="status">Status <i
+                                                class='bx bx-sort'></i></button></th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($slides as $slide)
+                                    <tr data-search-row="{{ strtolower($slide->title . ' ' . $slide->description . ' ' . ($slide->background_image_path ?: 'default background')) }}"
+                                        data-title="{{ strtolower($slide->title) }}"
+                                        data-order="{{ $slide->sort_order }}"
+                                        data-status="{{ $slide->is_active ? 'active' : 'hidden' }}">
+                                        <td><strong>{{ $slide->title }}</strong>
+                                            <div class="table-muted">Highlight: {{ $slide->highlight_text ?: 'None' }}
+                                            </div>
+                                            <div class="table-muted">Hook:
+                                                {{ $slide->hook_message ?: 'None' }}{{ $slide->hook_highlight_text ? ' | Hook Highlight: ' . $slide->hook_highlight_text : '' }}
+                                            </div>
+                                        </td>
+                                        <td class="table-muted">{{ $slide->description }}</td>
+                                        <td>{{ $slide->background_image_path ? 'Image: ' . $slide->background_image_path : 'Default banner background' }}
+                                        </td>
+                                        <td>{{ $slide->sort_order }}</td>
+                                        <td><span
+                                                class="status-badge {{ $slide->is_active ? 'active' : 'hidden' }}">{{ $slide->is_active ? 'Active' : 'Hidden' }}</span>
+                                        </td>
+                                        <td>
+                                            <div class="actions"><a
+                                                    href="{{ route('admin.home-slides.edit', $slide) }}"
+                                                    class="secondary-btn">Edit</a>
+                                                <form method="POST"
+                                                    action="{{ route('admin.home-slides.destroy', $slide) }}"
+                                                    onsubmit="return confirm('Delete this slide?');">@csrf
+                                                    @method('DELETE')<button type="submit"
+                                                        class="danger-btn">Delete</button></form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <div class="modal-backdrop" id="slides-create-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <h2>Create Slide</h2>
+                </div><button type="button" class="modal-close" data-modal-close>&times;</button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{{ route('admin.home-slides.store') }}" enctype="multipart/form-data">
+                    @csrf<div class="form-grid">
+                        <div class="field"><label>Title</label><input type="text" name="title"
+                                value="{{ old('title') }}" required></div>
+                        <div class="field"><label>Highlighted Word</label><input type="text" name="highlight_text"
+                                value="{{ old('highlight_text') }}"></div>
+                        <div class="field full"><label>Hook Message</label><input type="text" name="hook_message"
+                                value="{{ old('hook_message') }}"></div>
+                        <div class="field"><label>Hook Highlighted Word</label><input type="text"
+                                name="hook_highlight_text" value="{{ old('hook_highlight_text') }}"></div>
+                        <div class="field full"><label>Description</label>
+                            <textarea name="description">{{ old('description') }}</textarea>
+                        </div>
+                        <div class="field"><label>Primary Label</label><input type="text" name="primary_label"
+                                value="{{ old('primary_label') }}"></div>
+                        <div class="field"><label>Primary URL</label><input type="text" name="primary_url"
+                                value="{{ old('primary_url') }}"></div>
+                        <div class="field"><label>Secondary Label</label><input type="text" name="secondary_label"
+                                value="{{ old('secondary_label') }}"></div>
+                        <div class="field"><label>Secondary URL</label><input type="text" name="secondary_url"
+                                value="{{ old('secondary_url') }}"></div>
+                        <div class="field"><label>Background Image</label><input type="file"
+                                name="background_image_file" accept="image/*"></div>
+                        <div class="field"><label>Sort Order</label><input type="number" min="0"
+                                name="sort_order" value="{{ old('sort_order', $slides->count() + 1) }}" required></div>
+                    </div><label class="checkbox-row"><input type="checkbox" name="is_active" value="1"
+                            {{ old('is_active', '1') ? 'checked' : '' }}><span>Show this slide</span></label>
+                    <div style="display:flex;justify-content:flex-end;gap:12px;margin-top:22px;"><button
+                            type="button" class="ghost-btn" data-modal-close>Cancel</button><button type="submit"
+                            class="primary-btn">Save Slide</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @if ($editingItem)
+        <div data-open-modal="slides-edit-modal"></div>
+        <div class="modal-backdrop" id="slides-edit-modal">
+            <div class="modal-card">
+                <div class="modal-header">
+                    <div>
+                        <h2>Edit Slide</h2>
+                    </div><a href="{{ route('admin.home-slides.index') }}" class="modal-close"
+                        style="display:inline-flex;align-items:center;justify-content:center;">&times;</a>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{ route('admin.home-slides.update', $editingItem) }}"
+                        enctype="multipart/form-data">@csrf @method('PUT')<div class="form-grid">
+                            <div class="field"><label>Title</label><input type="text" name="title"
+                                    value="{{ old('title', $editingItem->title) }}" required></div>
+                            <div class="field"><label>Highlighted Word</label><input type="text"
+                                    name="highlight_text"
+                                    value="{{ old('highlight_text', $editingItem->highlight_text) }}"></div>
+                            <div class="field full"><label>Hook Message</label><input type="text"
+                                    name="hook_message"
+                                    value="{{ old('hook_message', $editingItem->hook_message) }}"></div>
+                            <div class="field"><label>Hook Highlighted Word</label><input type="text"
+                                    name="hook_highlight_text"
+                                    value="{{ old('hook_highlight_text', $editingItem->hook_highlight_text) }}"></div>
+                            <div class="field full"><label>Description</label>
+                                <textarea name="description">{{ old('description', $editingItem->description) }}</textarea>
+                            </div>
+                            <div class="field"><label>Primary Label</label><input type="text"
+                                    name="primary_label"
+                                    value="{{ old('primary_label', $editingItem->primary_label) }}"></div>
+                            <div class="field"><label>Primary URL</label><input type="text" name="primary_url"
+                                    value="{{ old('primary_url', $editingItem->primary_url) }}"></div>
+                            <div class="field"><label>Secondary Label</label><input type="text"
+                                    name="secondary_label"
+                                    value="{{ old('secondary_label', $editingItem->secondary_label) }}"></div>
+                            <div class="field"><label>Secondary URL</label><input type="text"
+                                    name="secondary_url"
+                                    value="{{ old('secondary_url', $editingItem->secondary_url) }}"></div>
+                            <div class="field"><label>Background Image</label><input type="file"
+                                    name="background_image_file" accept="image/*"><small
+                                    style="display:block;margin-top:6px;color:#6b7280;">{{ $editingItem->background_image_path ? 'Current: ' . $editingItem->background_image_path : 'No uploaded image yet.' }}</small>
+                            </div>
+                            <div class="field"><label>Sort Order</label><input type="number" min="0"
+                                    name="sort_order" value="{{ old('sort_order', $editingItem->sort_order) }}"
+                                    required></div>
+                        </div><label class="checkbox-row"><input type="checkbox" name="is_active" value="1"
+                                {{ old('is_active', $editingItem->is_active) ? 'checked' : '' }}><span>Show this
+                                slide</span></label>
+                        <div style="display:flex;justify-content:flex-end;gap:12px;margin-top:22px;"><a
+                                href="{{ route('admin.home-slides.index') }}" class="ghost-btn">Cancel</a><button
+                                type="submit" class="primary-btn">Update Slide</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endif
 </x-admin.layouts.app>

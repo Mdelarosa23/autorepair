@@ -54,7 +54,8 @@ class SiteSetting extends Model
             'request_tow_label' => static::getValue('request_tow_label', 'REQUEST A TOW'),
             'towing_service_number' => $towingServiceNumber,
             'towing_service_href' => static::phoneHref($towingServiceNumber),
-            'working_hours' => static::getValue('working_hours', 'Mon-Sat: 8AM - 6PM'),
+            'working_hours' => static::getValue('working_hours', 'Mon-Fri: 8:30AM - 6:00PM'),
+            'towing_hours' => static::getValue('towing_hours', 'Mon-Fri: 8:00AM - 5:00PM, Sat: 8:00AM - 5:00PM'),
         ];
     }
 
@@ -73,6 +74,30 @@ class SiteSetting extends Model
             'phone' => $contact['call_now_number'],
             'phone_href' => $contact['call_now_href'],
             'hours' => $contact['working_hours'],
+        ];
+    }
+
+    public static function aboutUsSettings(): array
+    {
+        return [
+            'about_mission' => static::getValue(
+                'about_mission',
+                'Deliver honest diagnostics and dependable repairs that keep families and travelers safe on the road.'
+            ),
+            'about_vision' => static::getValue(
+                'about_vision',
+                'Be Nashville\'s most trusted neighborhood shop for auto care, transparency, and long-term reliability.'
+            ),
+            'about_story' => static::getValue(
+                'about_story',
+                'Mads Auto Repair started with one goal: give drivers a shop they can trust without hesitation. '
+                . 'Over the years, we have helped local families, commuters, and travelers get back on the road quickly and safely. '
+                . 'Our technicians combine modern diagnostics with hands-on experience to solve problems the right way the first time. '
+                . 'We believe clear communication matters, so we explain every repair and cost before any work begins. '
+                . 'Whether it is scheduled maintenance, major mechanical work, or roadside towing support, we treat each job with urgency and care. '
+                . 'That commitment to honesty and quality is why so many customers choose us and keep coming back.'
+            ),
+            'about_image_path' => static::getValue('about_image_path', 'assets/img/whyus.png'),
         ];
     }
 

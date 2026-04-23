@@ -1,7 +1,7 @@
 @php($items = \App\Models\FaqItem::publicItems())
 
 <!-- Faq -->
-<section class="faq-area pt-100 pb-70" id="faq">
+<section class="faq-area pb-70" id="faq">
     <div class="container">
         <div class="row faq-wrap">
             <div class="col-lg-12">

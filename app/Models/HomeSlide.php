@@ -13,6 +13,8 @@ class HomeSlide extends Model
     protected $fillable = [
         'title',
         'highlight_text',
+        'hook_message',
+        'hook_highlight_text',
         'description',
         'primary_label',
         'primary_url',

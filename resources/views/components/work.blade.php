@@ -27,7 +27,7 @@
 )
 @php($theme = \App\Models\SiteSetting::themeSettings())
 <!-- Work -->
-<section class="work-area pt-100 pb-70" id="works">
+<section class="work-area pb-70" id="works">
     <style>
         .work-area .work-view-btn {
             padding: 10px 20px;

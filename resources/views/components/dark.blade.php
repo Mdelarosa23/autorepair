@@ -383,6 +383,15 @@
         color: #ffffff;
     }
 
+    .theme-dark .about-area {
+        background-color: #0f0f0f;
+    }
+
+    .theme-dark .about-area .about-card {
+        background-color: #1a1a1a;
+        box-shadow: none;
+    }
+
     .theme-dark .faq-area .accordion a {
         color: #ffffff;
         border-color: #ffffff;

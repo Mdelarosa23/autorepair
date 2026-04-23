@@ -144,11 +144,11 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="field">
-                            <label>Link URL</label>
-                            <input type="text" name="link_url" value="{{ old('link_url', '#works') }}">
-                            <small style="color:#6b7280;">Optional. The public gallery now opens images in a modal viewer.</small>
-                        </div>
+                        <!--<div class="field">-->
+                        <!--    <label>Link URL</label>-->
+                        <!--    <input type="text" name="link_url" value="{{ old('link_url', '#works') }}">-->
+                        <!--    <small style="color:#6b7280;">Optional. The public gallery now opens images in a modal viewer.</small>-->
+                        <!--</div>-->
                     </div>
 
                     <label class="checkbox-row">
@@ -211,11 +211,11 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="field">
-                                <label>Link URL</label>
-                                <input type="text" name="link_url" value="{{ old('link_url', $editingItem->link_url) }}">
-                                <small style="color:#6b7280;">Optional. The public gallery now opens images in a modal viewer.</small>
-                            </div>
+                            <!--<div class="field">-->
+                            <!--    <label>Link URL</label>-->
+                            <!--    <input type="text" name="link_url" value="{{ old('link_url', $editingItem->link_url) }}">-->
+                            <!--    <small style="color:#6b7280;">Optional. The public gallery now opens images in a modal viewer.</small>-->
+                            <!--</div>-->
                         </div>
 
                         <label class="checkbox-row">

@@ -47,13 +47,17 @@
                                 </div>
                                 <div class="field">
                                     <label for="working_hours">Working Hours</label>
-                                    <input id="working_hours" type="text" name="working_hours" value="{{ old('working_hours', $settings['working_hours']) }}" required>
+                                    <textarea id="working_hours" name="working_hours" rows="3" required>{{ old('working_hours', $settings['working_hours']) }}</textarea>
+                                </div>
+                                <div class="field">
+                                    <label for="towing_hours">Towing Hours</label>
+                                    <textarea id="towing_hours" name="towing_hours" rows="3" required>{{ old('towing_hours', $settings['towing_hours']) }}</textarea>
                                 </div>
                                 {{-- <p class="table-muted" style="margin-top:12px;">Use a simple text string, for example: Mon-Fri: 8:30am-6:00pm.</p> --}}
                             </div>
                         </div>
 
-                        @foreach (['call_now_number', 'request_tow_label', 'request_tow_url', 'towing_service_number', 'working_hours'] as $field)
+                        @foreach (['call_now_number', 'request_tow_label', 'request_tow_url', 'towing_service_number', 'working_hours', 'towing_hours'] as $field)
                             @error($field)
                                 <small style="display:block; color:#b91c1c; margin-top:10px;">{{ $message }}</small>
                             @enderror

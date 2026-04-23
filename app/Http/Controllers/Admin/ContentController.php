@@ -40,6 +40,13 @@ class ContentController extends Controller
                 'manage_url' => route('admin.work-items.index'),
                 'manage_label' => 'Manage Works',
             ],
+            'about-us' => [
+                'title' => 'About Us',
+                'description' => 'Manage your mission, vision, shop story, and the About Us image shown before FAQ.',
+                'manage_url' => route('admin.about-us.edit'),
+                'manage_label' => 'Manage About Us',
+                'summary' => SiteSetting::aboutUsSettings(),
+            ],
             'faq' => [
                 'title' => 'FAQ',
                 'description' => 'Edit the common questions and answers customers read before getting in touch.',

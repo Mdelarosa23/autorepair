@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\AboutUsSettingsController;
 use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\ContactSettingsController;
+use App\Http\Controllers\Admin\ChangePasswordController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FaqItemController;
 use App\Http\Controllers\Admin\HomeSlideController;
@@ -12,7 +14,9 @@ use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\Admin\WhyUsItemController;
 use App\Http\Controllers\Admin\WorkItemController;
 use App\Models\HomeSlide;
+use App\Models\PublicVisit;
 use App\Models\SiteSetting;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
@@ -25,7 +29,9 @@ Route::get('/api/health', function () {
     ]);
 });
 
-Route::get('/', function () {
+Route::get('/', function (Request $request) {
+    PublicVisit::recordFromRequest($request);
+
     $firstSlide = HomeSlide::publicItems()->first();
 
     return view('home', [
@@ -108,11 +114,16 @@ Route::prefix('admin')->group(function () {
         Route::put('/faq-items/{faqItem}', [FaqItemController::class, 'update'])->name('admin.faq-items.update');
         Route::delete('/faq-items/{faqItem}', [FaqItemController::class, 'destroy'])->name('admin.faq-items.destroy');
 
+        Route::get('/about-us', [AboutUsSettingsController::class, 'edit'])->name('admin.about-us.edit');
+        Route::post('/about-us', [AboutUsSettingsController::class, 'update'])->name('admin.about-us.update');
+
         Route::get('/contact-settings', [ContactSettingsController::class, 'edit'])->name('admin.contact-settings.edit');
         Route::post('/contact-settings', [ContactSettingsController::class, 'update'])->name('admin.contact-settings.update');
 
         Route::get('/theme', [ThemeController::class, 'edit'])->name('admin.theme.edit');
         Route::post('/theme', [ThemeController::class, 'update'])->name('admin.theme.update');
+        Route::get('/change-password', [ChangePasswordController::class, 'edit'])->name('admin.password.edit');
+        Route::post('/change-password', [ChangePasswordController::class, 'update'])->name('admin.password.update');
         Route::post('/logout', [AuthController::class, 'destroy'])->name('admin.logout');
     });
 });
