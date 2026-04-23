@@ -4,6 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ $title ?? 'Admin Panel' }}</title>
+        {{-- <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"> --}}
+        <link rel="icon" type="image/png" href="assets/img/logo.png">
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/boxicons.min.css') }}">
         <style>
             :root { color-scheme: light; --bg:#f3f4f6; --panel:#fff; --text:#111827; --muted:#6b7280; --line:#e5e7eb; --line-strong:#d1d5db; --shadow:0 18px 45px rgba(17,24,39,.08); --brand:#111827; --brand-soft:#f59e0b; --success:#166534; --danger:#b91c1c; }

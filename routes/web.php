@@ -14,9 +14,7 @@ use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\Admin\WhyUsItemController;
 use App\Http\Controllers\Admin\WorkItemController;
 use App\Models\HomeSlide;
-use App\Models\PublicVisit;
 use App\Models\SiteSetting;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
@@ -29,9 +27,7 @@ Route::get('/api/health', function () {
     ]);
 });
 
-Route::get('/', function (Request $request) {
-    PublicVisit::recordFromRequest($request);
-
+Route::get('/', function () {
     $firstSlide = HomeSlide::publicItems()->first();
 
     return view('home', [

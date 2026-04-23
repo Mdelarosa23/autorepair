@@ -21,6 +21,14 @@ class AdminUserSeeder extends Seeder
             ]
         );
 
+        User::updateOrCreate(
+            ['email' => env('ADMIN_EMAIL', 'admin@madsautorepair2.com')],
+            [
+                'name' => env('ADMIN_NAME', 'Admin User2'),
+                'password' => env('ADMIN_PASSWORD', 'admin12345'),
+            ]
+        );
+
         $defaults = [
             'light_accent' => '#fdb819',
             'light_background' => '#ffffff',

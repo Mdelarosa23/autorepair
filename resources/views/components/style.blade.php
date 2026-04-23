@@ -1365,7 +1365,7 @@ footer .footer-img {
   position: absolute;
   left: 0;
   right: 0;
-  /* top: 150px; */
+  /*top: 150px;*/
   opacity: 0.2;
   max-width: 680px;
   margin-left: auto;
@@ -1655,7 +1655,7 @@ footer .footer-img {
 }
 .banner-area-three .banner-text p {
   color: #ffffff;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 .banner-area-three .video-wrap {
   text-align: center;

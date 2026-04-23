@@ -39,7 +39,7 @@
                 <div class="col-md-4">
                     <h4><i class='bx bxs-time'></i> Hours</h4>
                     <p>
-                        Mechanic Shop: 
+                        Mechanic: 
                         {!! nl2br(e($siteContact['working_hours'])) !!}<br>
                         Towing: 
                         {!! nl2br(e($siteContact['towing_hours'])) !!}
